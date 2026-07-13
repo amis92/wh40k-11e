@@ -7,6 +7,10 @@ on:
     types: [created]
 jobs:
   report:
+    permissions:
+      issues: write
+      contents: write
+      pull-requests: write
     uses: WarHub/muster/.github/workflows/report-check.yml@main
     with:
       data-source: "github:BSData/wh40k-11e" # ← repo-specific: your org/repo[@ref]
