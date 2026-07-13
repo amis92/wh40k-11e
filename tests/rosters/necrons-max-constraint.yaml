@@ -1,0 +1,34 @@
+id: necrons-max-constraint
+category: real-world
+description: >
+  Selecting the "Detachment" entry twice on a Necrons force violates its
+  max:1, scope:roster constraint (Necrons.yaml, constraint id
+  1985-ef7c-a9f0-12c9) — verify the engine reports the violation.
+tags: [wh40k-11e, real-world, necrons, constraint]
+
+setup:
+  dataSource: "github:BSData/wh40k-11e@main"
+
+steps:
+  - id: add-force
+    action: addForce
+    forceEntryId: bb9d-299a-ed60-2d8a # "Army Roster" forceEntry, Warhammer 40,000.yaml
+    catalogueId: b654-a18a-ea1-3bf2 # "Xenos - Necrons" catalogue, Necrons.yaml
+
+  - action: selectEntry
+    forceId: ${{ steps.add-force.forceId }}
+    entryId: 82f1-b597-7b06-8ba2 # "Detachment" upgrade, Necrons.yaml — max:1, scope:roster (id 1985-ef7c-a9f0-12c9)
+
+  - expectedState:
+      forces:
+        - selectionCount: 2
+
+  # Second Detachment exceeds max:1, scope:roster.
+  - action: selectEntry
+    forceId: ${{ steps.add-force.forceId }}
+    entryId: 82f1-b597-7b06-8ba2
+
+  - expectedState:
+      errorsContain:
+        - on: selection 82f1-b597-7b06-8ba2
+          from: 82f1-b597-7b06-8ba2/1985-ef7c-a9f0-12c9

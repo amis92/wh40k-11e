@@ -1,0 +1,50 @@
+id: necrons-single-unit-cost
+category: real-world
+description: >
+  Add a Necrons force and select a single Deathmarks squad — verify the
+  selection's pts cost matches the flat cost recorded on the entry in
+  Necrons.yaml (costs: pts value: 60).
+
+  NOTE: asserted at the selection level, not roster-level
+  (expectedState.costs), because of a known wham gap: roster-level cost
+  aggregation (StateMapper.CollectReferencedCostTypes) walks the raw
+  entryLink symbol instead of its resolved target, so cost types that are
+  only reachable through a catalogue's entryLinks (i.e. every combat unit
+  in this repo — see docs/authoring-fixtures.md) never make it into
+  referencedCostTypeIds and are silently dropped from the roster-level
+  `costs` total. Per-selection costs (asserted here) are unaffected and
+  correct. See muster task-9-report.md for the full writeup.
+tags: [wh40k-11e, real-world, necrons, cost, known-gap]
+
+setup:
+  dataSource: "github:BSData/wh40k-11e@main"
+
+steps:
+  - id: add-force
+    action: addForce
+    forceEntryId: bb9d-299a-ed60-2d8a # "Army Roster" forceEntry, Warhammer 40,000.yaml
+    catalogueId: b654-a18a-ea1-3bf2 # "Xenos - Necrons" catalogue, Necrons.yaml
+
+  - action: selectEntry
+    forceId: ${{ steps.add-force.forceId }}
+    entryId: b7d7-14c9-63c1-ded5 # "Deathmarks" unit, Necrons.yaml (costs: pts value: 60)
+
+  - expectedState:
+      forces:
+        - selectionCount: 2
+          selections:
+            - name: "Show/Hide Options"
+              type: upgrade
+            - name: "Deathmarks"
+              type: unit
+              costs:
+                - name: "pts"
+                  value: 60
+                - name: "Crusade Points"
+                  value: 0
+                - name: "Crusade: Battle Honours"
+                  value: 0
+                - name: "Crusade: Experience"
+                  value: 0
+                - name: "Crusade: Weapon Modifications"
+                  value: 0

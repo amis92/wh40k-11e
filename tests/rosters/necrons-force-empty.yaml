@@ -1,0 +1,22 @@
+id: necrons-force-empty
+category: real-world
+description: >
+  Adding a Necrons force with no unit selections has zero cost — only the
+  free "Show/Hide Options" display toggle is auto-selected.
+tags: [wh40k-11e, real-world, necrons]
+
+setup:
+  dataSource: "github:BSData/wh40k-11e@main"
+
+steps:
+  - action: addForce
+    forceEntryId: bb9d-299a-ed60-2d8a # "Army Roster" forceEntry, Warhammer 40,000.yaml
+    catalogueId: b654-a18a-ea1-3bf2 # "Xenos - Necrons" catalogue, Necrons.yaml
+
+  - expectedState:
+      costs: []
+      forces:
+        - selectionCount: 1
+          selections:
+            - name: "Show/Hide Options"
+              type: upgrade
