@@ -1,7 +1,7 @@
 name: muster
 on:
   pull_request:
-    branches: [muster-fixtures, json-to-yaml]
+    branches: [main, muster-fixtures, json-to-yaml]
 permissions:
   contents: read
   pull-requests: write
