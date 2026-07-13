@@ -3,7 +3,7 @@ category: real-world
 description: >
   Add a Necrons force and select a single Deathmarks squad — verify the
   selection's pts cost matches the flat cost recorded on the entry in
-  Necrons.yaml (costs: pts value: 60).
+  Necrons.yaml (costs: pts value: 55).
 
   NOTE: asserted at the selection level, not roster-level
   (expectedState.costs), because of a known wham gap: roster-level cost
@@ -27,7 +27,7 @@ steps:
 
   - action: selectEntry
     forceId: ${{ steps.add-force.forceId }}
-    entryId: b7d7-14c9-63c1-ded5 # "Deathmarks" unit, Necrons.yaml (costs: pts value: 60)
+    entryId: b7d7-14c9-63c1-ded5 # "Deathmarks" unit, Necrons.yaml (costs: pts value: 55)
 
   - expectedState:
       forces:
@@ -39,7 +39,7 @@ steps:
               type: unit
               costs:
                 - name: "pts"
-                  value: 60
+                  value: 55
                 - name: "Crusade Points"
                   value: 0
                 - name: "Crusade: Battle Honours"
