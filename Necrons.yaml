@@ -15581,7 +15581,7 @@ catalogue:
       costs:
         - name: pts
           typeId: 51b2-306e-1021-d207
-          value: 60
+          value: 55
         - name: Crusade Points
           typeId: b03b-c239-15a5-da55
           value: 0
