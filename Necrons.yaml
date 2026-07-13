@@ -15581,7 +15581,7 @@ catalogue:
       costs:
         - name: pts
           typeId: 51b2-306e-1021-d207
-          value: 60
+          value: 65
         - name: Crusade Points
           typeId: b03b-c239-15a5-da55
           value: 0
@@ -15957,7 +15957,7 @@ catalogue:
     - costs:
         - name: pts
           typeId: 51b2-306e-1021-d207
-          value: 60
+          value: 65
       categoryLinks:
         - targetId: ee0-cf31-4fb5-6b26
           id: 90c1-2c37-e5da-18d
@@ -16307,7 +16307,7 @@ catalogue:
     - costs:
         - name: pts
           typeId: 51b2-306e-1021-d207
-          value: 60
+          value: 65
       infoLinks:
         - name: Detachment Rules
           hidden: false
@@ -23182,7 +23182,7 @@ catalogue:
               id: 37a3-66bd-b138-9f7f
               includeChildSelections: true
           type: set
-          value: 60
+          value: 65
           field: 51b2-306e-1021-d207
         - conditions:
             - type: atLeast
@@ -27837,7 +27837,7 @@ catalogue:
           costs:
             - name: pts
               typeId: 51b2-306e-1021-d207
-              value: 60
+              value: 65
           type: model
           import: true
           name: Convergence of Dominion Starstele
