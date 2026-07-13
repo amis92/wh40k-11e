@@ -1,0 +1,39 @@
+id: "report-issue-6"
+category: report
+description: "Deathmarks squad points check"
+setup:
+  dataSource: "github:BSData/wh40k-11e"
+
+steps:
+  - id: add-force
+    action: addForce
+    forceEntryId: bb9d-299a-ed60-2d8a
+    catalogueId: b654-a18a-ea1-3bf2
+
+  - action: selectEntry
+    forceId: ${{ steps.add-force.forceId }}
+    entryId: b7d7-14c9-63c1-ded5
+
+  # observed in the app today
+  - expectedState:
+      forces:
+        - selections:
+            - name: "Show/Hide Options"
+              type: upgrade
+            - name: "Deathmarks"
+              type: unit
+              costs:
+                - name: "pts"
+                  value: 60
+                - name: "Crusade Points"
+                  value: 0
+                - name: "Crusade: Battle Honours"
+                  value: 0
+                - name: "Crusade: Experience"
+                  value: 0
+                - name: "Crusade: Weapon Modifications"
+                  value: 0
+
+  # expected values pinned at promotion (engine: wham)
+  - expectedState:
+      costs:
